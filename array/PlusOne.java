@@ -9,26 +9,22 @@ public class PlusOne {
          * Input: digits = [4,3,2,1]
          * Output: [4,3,2,2]
          */
-        int[] numbers = { 9, 9 };
+        int[] numbers = { 1, 2, 3 };
         System.out.println(Arrays.toString(plusOne(numbers)));
 
     }
 
     public static int[] plusOne(int[] digits) {
         int len = digits.length;
-        if (digits[len - 1] != 9) {
-            digits[len - 1] += 1;
-            return digits;
-        }
-        int[] newArray = new int[len + 1];
         for (int i = len - 1; i >= 0; i--) {
-            if (digits[i] == 9) {
-                newArray[i + 1] = 0;
+            if (digits[i] != 9) {
+                digits[i] += 1;
+                return digits;
             } else {
-                newArray[i + 1] = digits[i] + 1;
-                return newArray;
+                digits[i] = 0;
             }
         }
+        int[] newArray = new int[len + 1];
         newArray[0] = 1;
         return newArray;
     }
