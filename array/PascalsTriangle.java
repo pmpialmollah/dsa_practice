@@ -1,27 +1,29 @@
 package array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class PascalsTriangle {
-    public static void main(String[] args) {
 
-        System.out.println(generate(5));
+    public static void main(String[] args) {
+        List<List<Integer>> triangle = generate(5);
+        System.out.println(triangle);
     }
 
     public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> pascal = new ArrayList<>();
-
+        List<List<Integer>> pascalsTriangle = new ArrayList<>();
         for (int i = 0; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>(Collections.nCopies(i + 1, 1));
-
-            for (int j = 1; j < i; j++) {
-                int val = pascal.get(i - 1).get(j - 1) + pascal.get(i - 1).get(j);
-                row.set(j, val);
+            List<Integer> list = new ArrayList<>(Collections.nCopies(i + 1, 1));
+            if (i > 1) {
+                for (int j = 1; j < list.size() - 1; j++) {
+                    int val = pascalsTriangle.get(i - 1).get(j - 1) + pascalsTriangle.get(i - 1).get(j);
+                    list.set(j, val);
+                }
             }
-            pascal.add(row);
+            pascalsTriangle.add(list);
         }
-        return pascal;
+        return pascalsTriangle;
     }
 }
