@@ -1,30 +1,42 @@
 package array;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
 public class ContainsDuplicateTwo {
-    public static void main(String[] args) {
-        // Input: nums = [1,2,3,1,2,3], k = 2
-        // Output: false
 
-        int[] nums = { 1, 5, 1, 0 };
-        System.out.println(containsNearbyDuplicate(nums, 2));
+    public static void main(String[] args) {
+        /*
+         * Example 1:
+         * 
+         * Input: nums = [1,2,3,1], k = 3
+         * Output: true
+         * Example 2:
+         * 
+         * Input: nums = [1,0,1,1], k = 1
+         * Output: true
+         * Example 3:
+         * 
+         * Input: nums = [1,2,3,1,2,3], k = 2
+         * Output: false
+         */
+
+        int[] nums = { 1, 2, 3, 1, 2, 3 };
+        System.out.println(containsNearbyDuplicate(nums, 3));
     }
 
     public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        HashMap<Integer, Integer> myHashMap = new HashMap<>();
+        int left = 0;
+        int right = 1;
 
-        for (int i=0; i<nums.length; i++){
-            myHashMap.put(i, nums[i]);
+        while (left < nums.length - 1) {
+            while (right - left <= k && right < nums.length) {
+                if (nums[left] == nums[right]) {
+                    return true;
+                }
+                right++;
+            }
+            left++;
+            right = left + 1;
         }
-
-        int preIndex = 0;
-        for(int num: myHashMap.keySet()){
-            
-        }
-
-        System.out.println(myHashMap);
         return false;
     }
+
 }
