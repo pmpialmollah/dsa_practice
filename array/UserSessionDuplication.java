@@ -10,18 +10,14 @@ public class UserSessionDuplication {
     }
 
     public static int sessionDuplication(int[] array) {
+        if (array.length == 0) {
+            return 0;
+        }
         int index = 0;
-        int count = 0;
-        int leftValue = array[0];
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != leftValue) {
-                leftValue = array[i];
-                count = 0;
-            }
-            if (count < 2) {
-                array[index] = leftValue;
+            if (index < 2 || array[i] != array[i-2]) {
+                array[index] = array[i];
                 index++;
-                count++;
             }
         }
         return index;
