@@ -15,8 +15,9 @@ public class PlusOne {
     }
 
     public static int[] plusOne(int[] digits) {
-        int len = digits.length;
-        for (int i = len - 1; i >= 0; i--) {
+        int lenOfArray = digits.length;
+        
+        for (int i = lenOfArray - 1; i >= 0; i--) {
             if (digits[i] != 9) {
                 digits[i] += 1;
                 return digits;
@@ -24,8 +25,8 @@ public class PlusOne {
                 digits[i] = 0;
             }
         }
-        int[] newArray = new int[len + 1];
-        newArray[0] = 1;
-        return newArray;
+        int[] modifiedNumbers = new int[lenOfArray + 1];
+        modifiedNumbers[0] = 1;
+        return modifiedNumbers;
     }
 }
